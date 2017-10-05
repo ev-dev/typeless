@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
+import SuggestionBar from './SuggestionBar'
 import styles from './Pad.css'
 
 export default class Pad extends Component {
   state = {
-    input: ''
+      input: ''
   }
 
   handleInputChange = ({target}) => {
@@ -14,10 +14,10 @@ export default class Pad extends Component {
 
   render() {
     const { input } = this.state
+    const { keyValue } = this.props
     return (
       <div>
-        <Link to="/">Home</Link>
-        <h1 className="center">Pad</h1>
+        <h1 className="center title main-title">TypeLess</h1>
         <textarea
           className="main-pad"
           placeholder="Start typing to see suggestions..."
@@ -25,6 +25,7 @@ export default class Pad extends Component {
           value={input}
         >
         </textarea>
+
         <h3 className="center">Output</h3>
         <h4 className="center">{input}</h4>
       </div>

@@ -3,15 +3,13 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
-import Pad from './components/Pad'
-import CounterPage from './containers/CounterPage';
+import Main from './components/Main'
 
 export default () => (
   <App>
     <Switch>
-      <Route path="/counter" component={CounterPage} />
-      <Route path="/pad" component={Pad} />
-      <Route path="/" component={HomePage} />
+      {/*<Route path="/" component={HomePage} />*/}
+      <Route path="/" component={Main} />
     </Switch>
   </App>
 );
