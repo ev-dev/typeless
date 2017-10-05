@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import KeyHandler, {KEYPRESS, KEYDOWN, KEYUP} from 'react-key-handler'
 
 class SuggestionBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      suggestions: [],
-      selected: 0,
       showLog: false
     }
   }
@@ -17,26 +14,15 @@ class SuggestionBar extends Component {
   }
 
   render() {
-    const sampleSuggestions = [
-      'dog',
-      'cat',
-      'fish',
-      'monkey',
-      'tiger',
-      'giraffe'
-    ]
-
-    const { selected, showLog } = this.state
-    const { keyValue } = this.props
-
-    console.log('keyValue:  ', keyValue)
-
+    const { showLog } = this.state
+    const { suggestions, selected } = this.props
+    
     return (
       <div className="suggestion-container">
         <div className="suggestion-list">
-          {sampleSuggestions.map((suggestion, i) => (
+          {suggestions.map((suggestion, i) => (
             <div key={i}
-              className={`suggestion-item ${i === 0 && 'suggestion-selected'}`}
+              className={`suggestion-item ${i === selected && 'suggestion-selected'}`}
             >
               <p className="suggestion-text">{suggestion}</p>
             </div>
@@ -46,16 +32,9 @@ class SuggestionBar extends Component {
           <h3 className="suggestion-title subtitle">Suggestions</h3>
           <ul className="instructions">
             <li>- Hit Tab To Complete</li>
-            <li>- Select Options With Arrow Keys</li>
+            <li>- Select Options With Arrows</li>
           </ul>
         </div>
-        
-        <KeyHandler keyEventName={KEYPRESS} keyValue="s" onKeyHandle={this.toggleLog} />
-
-        {showLog &&
-          <h1>You hit "S" Key!</h1>
-        }
-
       </div>
     )
   }
